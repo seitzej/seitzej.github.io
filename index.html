@@ -1,20 +1,153 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eric Seitz</title>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet' href='css/style.css' type='text/css'>
-</head>
-
-<body>
-  <main>
-    <div>
-      <h1 class="normal-weight">eric seitz.</h1>
-      <p>New site coming soon!</p>
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Leaving this in here for now until i figure out how to load bg from .css */
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+      }
+      body {
+        background:
+          linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url('alaska.jpg');
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="plus-grid">
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
+      <span>+</span>
     </div>
-  </main>
-</body>
+    <main class="content">
+      <div class="left">
+        <article>
+          <header>
+            Eric Seitz
+          </header>
+          <section>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel pretium sem. Nam ut nunc hendrerit, euismod ex sit amet, fermentum nunc. Proin nunc est, dapibus et cursus nec, iaculis eu leo. Fusce sed nunc vel orci mollis facilisis. Praesent laoreet magna vitae tortor luctus, id accumsan felis consequat. Quisque porta, augue consectetur ullamcorper sodales, orci sem porta quam, sit amet aliquet eros eros quis elit. Cras a dolor maximus nibh iaculis tristique. Vestibulum aliquam velit purus, non efficitur nunc euismod fermentum. Quisque pretium, enim vulputate fringilla euismod, urna sem consectetur tellus, eleifend mollis mauris odio sed risus. Proin varius ullamcorper dui vel pretium. Quisque scelerisque sagittis mollis. Etiam vehicula massa eu mi lacinia tristique. Nullam commodo augue quis mauris laoreet mollis.
+            </p>
+          </section>
+        </article>
+        <div class="find-me">
+          <a href="https://www.linkedin.com/in/seitzeric">
+            <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-medium fa-2x" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:seitzej@gmail.com">
+            <i class="fa fa-envelope-open fa-2x" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
 
+      <div class="right">
+        <div class="row">
+          <article>
+            <header>
+              Latest Projects
+            </header>
+            <section id="github-projects">
+              <!-- insert recently edited github repos here (for start) -->
+            </section>
+          </article>
+        </div>
+        <div class="row">
+          <article>
+            <header>
+              Latest Posts
+            </header>
+            <section>
+              <!-- insert latest medium post snippets here -->
+            </section>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script>
+      function fetchRecentRepos() {
+        const URL = 'https://api.github.com/users/seitzej/repos?sort=updated';
+        return fetch(URL)
+          .then(response => response.json())
+          .then(json => {
+            const repos = json.map(({ name, full_name, description }) => ({
+              name,
+              url: `https://www.github.com/${full_name}`,
+              description
+            }));
+            // remove repos w/o descriptions
+            const withDescription = repos.filter(({ description }) => description);
+
+            return withDescription;
+          })
+      }
+      function repoHTML(repo) {
+        return `
+          <article class="project">
+            <header>${repo.name}</header>
+            <section class="description">
+              ${repo.description}
+            </section>
+            <footer>
+              <a href="${repo.url}" target="_blank">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                See on github
+              </a>
+            </footer>
+          </article>
+        `;
+      }
+
+
+      function appendAllRepos(data) {
+        const container = document.querySelector("#github-projects");
+        data.forEach(repo => {
+          container.innerHTML += repoHTML(repo);
+        });
+      }
+
+
+      fetchRecentRepos()
+        .then(appendAllRepos);
+    </script>
+  </body>
 </html>

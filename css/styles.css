@@ -1,0 +1,116 @@
+.plus-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.plus-grid > span {
+  color: white;
+  margin: 4% 6% 4% 6%;
+  font-size: 1.5em;
+  opacity: 0.6;
+}
+
+.content {
+  font-family: 'Abel', sans-serif;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.left > *, .right > * {
+  background-color: rgba(0,0,0,0.75);
+}
+
+.content > .left {
+  width: 35%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+article {
+  padding: 1rem 1.5rem;
+  color: #DFDFDF;
+}
+
+article > header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #DFDFDF;
+  padding-bottom: 0.3rem;
+  letter-spacing: 0.25rem;
+}
+/*
+article > header:before {
+  content: '+';
+}*/
+
+.content > .right {
+  height: 80%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.row {
+  width: 100%;
+}
+.row:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.find-me {
+  margin-top: 2rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.find-me > a {
+  padding: 1rem;
+}
+
+.find-me i {
+  color: #DFDFDF;
+}
+
+.find-me i:hover {
+  cursor: pointer;
+  color: #C0C0C0;
+}
+
+
+/* Styles for the project rows */
+article.project {
+  padding-left: 0;
+  padding-right: 0;
+}
+article.project {
+  font-size: 0.9rem;
+}
+article.project > header {
+  font-size: 1.1rem;
+  border-bottom: none;
+}
+article.project footer {
+  margin-top: 0.5rem;
+}
+article.project a {
+  color: #DFDFDF;
+  text-decoration: none;
+}
+article.project a:hover {
+  color: #C0C0C0;
+  border-bottom: 1px solid #C0C0C0;
+  padding-bottom: 2px;
+  transition: 0.1s all;
+}
