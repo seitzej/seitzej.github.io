@@ -1,153 +1,95 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Identity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Eric Seitz</title>
-    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css" />
-    <style>
-      /* Leaving this in here for now until i figure out how to load bg from .css */
-      html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-      }
-      body {
-        background:
-          linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
-          url('alaska.jpg');
-        background-size: cover;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="plus-grid">
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-      <span>+</span>
-    </div>
-    <main class="content">
-      <div class="left">
-        <article>
-          <header>
-            Eric Seitz
-          </header>
-          <section>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel pretium sem. Nam ut nunc hendrerit, euismod ex sit amet, fermentum nunc. Proin nunc est, dapibus et cursus nec, iaculis eu leo. Fusce sed nunc vel orci mollis facilisis. Praesent laoreet magna vitae tortor luctus, id accumsan felis consequat. Quisque porta, augue consectetur ullamcorper sodales, orci sem porta quam, sit amet aliquet eros eros quis elit. Cras a dolor maximus nibh iaculis tristique. Vestibulum aliquam velit purus, non efficitur nunc euismod fermentum. Quisque pretium, enim vulputate fringilla euismod, urna sem consectetur tellus, eleifend mollis mauris odio sed risus. Proin varius ullamcorper dui vel pretium. Quisque scelerisque sagittis mollis. Etiam vehicula massa eu mi lacinia tristique. Nullam commodo augue quis mauris laoreet mollis.
-            </p>
-          </section>
-        </article>
-        <div class="find-me">
-          <a href="https://www.linkedin.com/in/seitzeric">
-            <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
-          </a>
-          <a href="#">
-            <i class="fa fa-medium fa-2x" aria-hidden="true"></i>
-          </a>
-          <a href="#">
-            <i class="fa fa-github fa-2x" aria-hidden="true"></i>
-          </a>
-          <a href="mailto:seitzej@gmail.com">
-            <i class="fa fa-envelope-open fa-2x" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
 
-      <div class="right">
-        <div class="row">
-          <article>
-            <header>
-              Latest Projects
-            </header>
-            <section id="github-projects">
-              <!-- insert recently edited github repos here (for start) -->
-            </section>
-          </article>
-        </div>
-        <div class="row">
-          <article>
-            <header>
-              Latest Posts
-            </header>
-            <section>
-              <!-- insert latest medium post snippets here -->
-            </section>
-          </article>
-        </div>
-      </div>
-    </main>
-    <script>
-      function fetchRecentRepos() {
-        const URL = 'https://api.github.com/users/seitzej/repos?sort=updated';
-        return fetch(URL)
-          .then(response => response.json())
-          .then(json => {
-            const repos = json.map(({ name, full_name, description }) => ({
-              name,
-              url: `https://www.github.com/${full_name}`,
-              description
-            }));
-            // remove repos w/o descriptions
-            const withDescription = repos.filter(({ description }) => description);
+<head>
+	<title>Eric Seitz</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
 
-            return withDescription;
-          })
-      }
-      function repoHTML(repo) {
-        return `
-          <article class="project">
-            <header>${repo.name}</header>
-            <section class="description">
-              ${repo.description}
-            </section>
-            <footer>
-              <a href="${repo.url}" target="_blank">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                See on github
-              </a>
-            </footer>
-          </article>
-        `;
-      }
+<body class="is-preload">
 
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-      function appendAllRepos(data) {
-        const container = document.querySelector("#github-projects");
-        data.forEach(repo => {
-          container.innerHTML += repoHTML(repo);
-        });
-      }
+		<!-- Main -->
+		<section id="main">
+			<header>
+				<span class="avatar"><img src="images/avatar.png" alt="" /></span>
+				<h1>Eric Seitz</h1>
+				<p>Software Engineer</p>
+			</header>
+			<!--
+						<hr />
+						<h2>Extra Stuff!</h2>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<input type="text" name="name" id="name" placeholder="Name" />
+								</div>
+								<div class="field">
+									<input type="email" name="email" id="email" placeholder="Email" />
+								</div>
+								<div class="field">
+									<select name="department" id="department">
+										<option value="">Department</option>
+										<option value="sales">Sales</option>
+										<option value="tech">Tech Support</option>
+										<option value="null">/dev/null</option>
+									</select>
+								</div>
+								<div class="field">
+									<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
+								</div>
+								<div class="field">
+									<input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
+								</div>
+								<div class="field">
+									<label>But are you a robot?</label>
+									<input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
+									<input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
+								</div>
+							</div>
+							<ul class="actions special">
+								<li><a href="#" class="button">Get Started</a></li>
+							</ul>
+						</form>
+						<hr />
+						-->
+			<footer>
+				<ul class="icons">
+					<li><a href="https://github.com/seitzej" class="fa-github">Github</a></li>
+					<li><a href="https://medium.com/@ericseitz" class="fa-medium">Medium</a></li>
+					<li><a href="https://www.linkedin.com/in/seitzeric/" class="fa-linkedin">Linkedin</a></li>
+				</ul>
+			</footer>
+		</section>
 
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="copyright">
+				<li><span class="fa fa-creative-commons"></span>Design modified from <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</footer>
 
-      fetchRecentRepos()
-        .then(appendAllRepos);
-    </script>
-  </body>
+	</div>
+
+	<!-- Scripts -->
+	<script>
+		if ('addEventListener' in window) {
+			window.addEventListener('load', function () { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+			document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+		}
+	</script>
+
+</body>
+
 </html>
